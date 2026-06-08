@@ -29,4 +29,5 @@ export async function POST(req) {
       body: String(b.body || ""),
     },
   });
- 
+  return NextResponse.json({ update });
+}
