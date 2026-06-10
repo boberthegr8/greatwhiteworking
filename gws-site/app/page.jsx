@@ -60,8 +60,13 @@ function Feed({ title, pillClass, items, emptyHint }) {
   );
 }
 
+// Flip to true to re-enable the live Hush / Pure Vision updates panel.
+// (Re-enabling also needs the Telegram bot env vars set, or you can post
+// updates manually from the admin dashboard.)
+const SHOW_UPDATES = false;
+
 export default async function Home() {
-  const updates = await getUpdates();
+  const updates = SHOW_UPDATES ? await getUpdates() : { hush: [], pv: [] };
   const tg = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_URL || "#";
 
   return (
@@ -206,6 +211,7 @@ export default async function Home() {
       </section>
 
       {/* ── UPDATES ────────────────────────────────────── */}
+      {SHOW_UPDATES && (
       <section id="updates" className="section-pad">
         <div className="container">
           <div className="section-head">
@@ -242,6 +248,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── TRIAL ──────────────────────────────────────── */}
       <section id="trial" className="section-pad">
