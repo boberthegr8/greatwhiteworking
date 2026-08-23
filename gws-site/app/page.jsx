@@ -22,21 +22,21 @@ export default function Home() {
             </h1>
             <p className="hero-sub">
               Great White Streams gives members a cleaner way to watch on Fire TV,
-              Android TV and Google TV. Use our GWS TV app or Waveo with the same
-              account you already have.
+              Android TV and Google TV. Install GWS Online or use Waveo with the same
+              Great White account.
             </p>
             <div className="hero-cta">
-              <Link href="/install" className="btn btn-primary">
-                Customer setup →
+              <Link href="/gws-online" className="btn btn-primary">
+                How to install GWS Online →
               </Link>
-              <Link href="#trial" className="btn btn-ghost">
-                Start a free trial
+              <Link href="/hush-update" className="btn btn-ghost">
+                Updating from Hush TiviMate?
               </Link>
             </div>
             <div className="hero-stats">
               <div className="stat">
-                <strong>GWS TV</strong>
-                <span>Our own TV app</span>
+                <strong>GWS ONLINE</strong>
+                <span>Main Great White app</span>
               </div>
               <div className="stat">
                 <strong>WAVEO</strong>
@@ -58,59 +58,59 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">The GWS setup</span>
-            <h2>Two apps. One Great White account.</h2>
+            <h2>GWS Online first. Waveo as an option.</h2>
             <p>
-              We are moving customers away from the old Hush app and into a simpler
-              Great White Streams setup.
+              New customers can install GWS Online directly. Existing Hush TiviMate
+              customers can move over without losing their account information.
             </p>
           </div>
 
           <div className="grid grid-3">
             <div className="card">
               <div className="ico">🦈</div>
-              <h3>Great White Streams TV</h3>
+              <h3>GWS Online</h3>
               <p>
-                Our own TV app, built specifically for Great White Streams customers
-                with a clean remote-friendly interface.
+                The main Great White Streams app, built for Fire TV, Android TV and
+                Google TV devices.
               </p>
             </div>
             <div className="card">
               <div className="ico">📺</div>
               <h3>Waveo</h3>
               <p>
-                A second supported player. Use Custom login with the GWS DNS and your
-                existing username and password.
+                A supported alternate player. Use Custom login with the Great White
+                DNS and your existing username and password.
               </p>
             </div>
             <div className="card">
               <div className="ico">🔑</div>
-              <h3>Keep your current login</h3>
+              <h3>Keep your Hush login</h3>
               <p>
                 Before changing apps, copy your username, password and expiration
-                date from Hush. The setup guide shows exactly where to find them.
+                date from Hush TiviMate. The migration guide shows exactly where.
               </p>
             </div>
             <div className="card">
               <div className="ico">⚡</div>
-              <h3>Fast setup</h3>
+              <h3>Simple installation</h3>
               <p>
-                Downloader codes, login settings and the correct DNS are laid out in
-                one customer guide with no guesswork.
+                GWS Online Downloader code 9627454 and Waveo Downloader code 9378234
+                are both included in the setup guides.
               </p>
             </div>
             <div className="card">
               <div className="ico">💬</div>
               <h3>Real support</h3>
               <p>
-                If something does not work, contact Great White Streams instead of
-                digging through player settings on your own.
+                If something does not work, contact Great White Streams and we will
+                help you get it sorted.
               </p>
             </div>
             <div className="card">
               <div className="ico">✅</div>
               <h3>Built for TV devices</h3>
               <p>
-                Designed around Fire TV, Android TV and Google TV devices with simple
+                Designed around Fire TV, Android TV and Google TV with simple
                 remote-control navigation.
               </p>
             </div>
@@ -122,25 +122,25 @@ export default function Home() {
         <div className="container">
           <div className="action-tiles">
             <div className="tile">
-              <span className="tag">APP 1</span>
-              <h3>Set up Great White Streams TV</h3>
+              <span className="tag">START HERE</span>
+              <h3>How to install GWS Online</h3>
               <p>
-                Save your existing account details first, then install and sign into
-                the GWS TV app.
+                Use Downloader code 9627454, choose Xtream, and sign in with your
+                Great White account.
               </p>
-              <Link href="/install#gws-tv" className="btn btn-primary">
-                GWS TV setup →
+              <Link href="/gws-online" className="btn btn-primary">
+                GWS Online install guide →
               </Link>
             </div>
             <div className="tile">
-              <span className="tag">APP 2</span>
-              <h3>Set up Waveo</h3>
+              <span className="tag">EXISTING HUSH CUSTOMERS</span>
+              <h3>How to update from Hush TiviMate</h3>
               <p>
-                Use Downloader code 9378234, choose Custom at login, and use the GWS
-                DNS with your existing username and password.
+                Save your Hush username, password and expiration date first, then move
+                to GWS Online or Waveo.
               </p>
-              <Link href="/install#waveo" className="btn btn-ghost">
-                Waveo setup →
+              <Link href="/hush-update" className="btn btn-ghost">
+                Hush update guide →
               </Link>
             </div>
           </div>
@@ -207,10 +207,10 @@ export default function Home() {
       <section className="section-pad" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="band">
-            <h2>Already a customer?</h2>
-            <p>Start with the customer setup guide before removing Hush.</p>
-            <Link href="/install" className="btn btn-primary">
-              Open customer setup →
+            <h2>Ready to install?</h2>
+            <p>Start with GWS Online. If you are still using Hush TiviMate, use the migration guide instead.</p>
+            <Link href="/gws-online" className="btn btn-primary">
+              Install GWS Online →
             </Link>
           </div>
         </div>
