@@ -1,24 +1,27 @@
-export default function AppIcon({ size = 38, className = "" }) {
+export default function AppIcon({ size = 42, className = "" }) {
   return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 108 108"
       role="img"
-      aria-label="Great White Streams"
+      aria-label="Great White Streams TV"
       className={className}
-      style={{ borderRadius: "22%", flex: "0 0 auto" }}
+      style={{ borderRadius: "16%", flex: "0 0 auto" }}
     >
-      <rect width="108" height="108" rx="24" fill="#050914" />
+      <rect width="108" height="108" rx="16" fill="#06111f" />
+      <rect x="13" y="16" width="82" height="61" rx="6" fill="#071725" stroke="#35e2d1" strokeWidth="5" />
+      <path d="M43 83h22" stroke="#35e2d1" strokeWidth="5" strokeLinecap="round" />
+      <path d="M54 77v7" stroke="#35e2d1" strokeWidth="5" strokeLinecap="round" />
       <path
-        d="M27 31 L81 31 A12 12 0 0 1 93 43 L93 65 A12 12 0 0 1 81 77 L27 77 A12 12 0 0 1 15 65 L15 43 A12 12 0 0 1 27 31 Z"
-        fill="none"
-        stroke="#22D3EE"
-        strokeWidth="3.5"
+        d="M27 55c10-11 24-15 40-12 8 1 14 4 19 8-5 7-12 12-22 14-15 3-28 0-37-10Z"
+        fill="#f4fbff"
       />
-      <path d="M25 42 H42 V47 H31 V61 H39 V56 H35 V52 H44 V66 H25 Z" fill="#22D3EE" />
-      <path d="M47 42 H52 L55 59 L59 48 L63 59 L66 42 H71 L66 66 H61 L59 58 L56 66 H51 Z" fill="#FFFFFF" />
-      <path d="M74 42 H88 V47 H79 V51 H86 V56 H79 V61 H88 V66 H74 Z" fill="#22D3EE" />
+      <path d="M51 43c3-8 8-13 14-17-1 8 1 14 5 19Z" fill="#35e2d1" />
+      <path d="M82 50c6-5 10-9 13-14-1 7 0 12-2 16 2 4 1 9 2 15-4-4-8-8-13-12Z" fill="#35e2d1" />
+      <path d="M45 64c-4 7-9 11-15 13 5-4 9-9 12-14Z" fill="#35e2d1" />
+      <circle cx="37" cy="51" r="2.2" fill="#071725" />
+      <path d="M28 59c5 3 11 4 17 4" fill="none" stroke="#071725" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
