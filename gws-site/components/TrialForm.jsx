@@ -30,8 +30,7 @@ export default function TrialForm() {
     return (
       <div className="form-card">
         <div className="form-msg ok">
-          Request received. We&apos;ll set up your trial and reach out by email
-          shortly. Welcome to the pod.
+          Request received. We&apos;ll set up your trial and reach out by email shortly.
         </div>
         <button
           className="btn btn-ghost"
@@ -52,28 +51,22 @@ export default function TrialForm() {
       </div>
       <div className="field">
         <label htmlFor="t-email">Email</label>
-        <input
-          id="t-email"
-          name="email"
-          type="email"
-          required
-          placeholder="you@email.com"
-        />
+        <input id="t-email" name="email" type="email" required placeholder="you@email.com" />
       </div>
       <div className="field">
-        <label htmlFor="t-service">Which service?</label>
-        <select id="t-service" name="service" defaultValue="Hush">
-          <option>Hush</option>
-          <option>Pure Vision</option>
+        <label htmlFor="t-service">Preferred app</label>
+        <select id="t-service" name="service" defaultValue="Great White Streams TV">
+          <option>Great White Streams TV</option>
+          <option>Waveo</option>
           <option>Not sure yet</option>
         </select>
       </div>
       <div className="field">
-        <label htmlFor="t-device">Your device / player</label>
+        <label htmlFor="t-device">Your device</label>
         <input
           id="t-device"
           name="device"
-          placeholder="e.g. Firestick + TiviMate, Android TV, iOS…"
+          placeholder="e.g. Firestick, Android TV, Google TV…"
         />
       </div>
       <div className="field">
@@ -81,19 +74,15 @@ export default function TrialForm() {
         <textarea
           id="t-message"
           name="message"
-          placeholder="Questions, timezone, preferred contact…"
+          placeholder="Questions, device details, preferred contact…"
         />
       </div>
       {status === "error" && <div className="form-msg err">{error}</div>}
-      <button
-        className="btn btn-primary btn-block"
-        disabled={status === "loading"}
-      >
+      <button className="btn btn-primary btn-block" disabled={status === "loading"}>
         {status === "loading" ? "Sending…" : "Request my free trial"}
       </button>
       <p className="form-note">
-        No payment needed for a trial. We&apos;ll email your login and setup
-        steps.
+        No payment needed for a trial. We&apos;ll email your login and setup steps.
       </p>
     </form>
   );
