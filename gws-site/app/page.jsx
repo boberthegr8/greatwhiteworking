@@ -4,109 +4,47 @@ import Footer from "@/components/Footer";
 import Shark from "@/components/Shark";
 import TrialForm from "@/components/TrialForm";
 import ContactForm from "@/components/ContactForm";
-import { prisma } from "@/lib/db";
-import { syncTelegramUpdates } from "@/lib/telegram";
 
-export const dynamic = "force-dynamic";
-
-async function getUpdates() {
-  try {
-    // Best-effort: pull any new Hush + Pure Vision posts from Telegram first.
-    await syncTelegramUpdates();
-    const all = await prisma.update.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 30,
-    });
-    return {
-      hush: all.filter((u) => u.source === "Hush").slice(0, 8),
-      pv: all.filter((u) => u.source === "Pure Vision").slice(0, 8),
-    };
-  } catch {
-    // DB not ready yet (e.g. first build) — render empty feeds gracefully.
-    return { hush: [], pv: [] };
-  }
-}
-
-function fmt(d) {
-  return new Date(d).toLocaleString(undefined, {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
-
-function Feed({ title, pillClass, items, emptyHint }) {
-  return (
-    <div className="feed">
-      <div className="feed-head">
-        <h3>{title}</h3>
-        <span className={`src-pill ${pillClass}`}>via Telegram</span>
-      </div>
-      <div className="feed-list">
-        {items.length === 0 ? (
-          <div className="feed-empty">{emptyHint}</div>
-        ) : (
-          items.map((u) => (
-            <div className="feed-item" key={u.id}>
-              <h4>{u.title}</h4>
-              {u.body ? <p>{u.body}</p> : null}
-              <time>{fmt(u.createdAt)}</time>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
-  );
-}
-
-// Flip to true to re-enable the live Hush / Pure Vision updates panel.
-// (Re-enabling also needs the Telegram bot env vars set, or you can post
-// updates manually from the admin dashboard.)
-const SHOW_UPDATES = false;
-
-export default async function Home() {
-  const updates = SHOW_UPDATES ? await getUpdates() : { hush: [], pv: [] };
+export default function Home() {
   const tg = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_URL || "#";
 
   return (
     <>
       <Nav />
 
-      {/* ── HERO ───────────────────────────────────────── */}
       <header className="hero">
         <div className="caustics" />
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">● Apex-tier streaming</span>
+            <span className="eyebrow">● GREAT WHITE STREAMS</span>
             <h1>
-              Dive into <span className="accent">Great White</span> Streams
+              Your TV. <span className="accent">Great White</span> simple.
             </h1>
             <p className="hero-sub">
-              Crystal-clear channels, rock-solid uptime, and a setup so smooth
-              it&apos;s almost predatory. Powered by Hush and Pure Vision —
-              GWS keeps you locked on the action.
+              Great White Streams gives members a cleaner way to watch on Fire TV,
+              Android TV and Google TV. Use our GWS TV app or Waveo with the same
+              account you already have.
             </p>
             <div className="hero-cta">
-              <Link href="#trial" className="btn btn-primary">
-                Start your free trial →
+              <Link href="/install" className="btn btn-primary">
+                Customer setup →
               </Link>
-              <Link href="/install" className="btn btn-ghost">
-                Install Hush
+              <Link href="#trial" className="btn btn-ghost">
+                Start a free trial
               </Link>
             </div>
             <div className="hero-stats">
               <div className="stat">
-                <strong>99.9%</strong>
-                <span>Server uptime</span>
+                <strong>GWS TV</strong>
+                <span>Our own TV app</span>
               </div>
               <div className="stat">
-                <strong>4K</strong>
-                <span>Ultra HD ready</span>
+                <strong>WAVEO</strong>
+                <span>Alternate player</span>
               </div>
               <div className="stat">
-                <strong>24/7</strong>
-                <span>Support &amp; updates</span>
+                <strong>1 LOGIN</strong>
+                <span>Same account credentials</span>
               </div>
             </div>
           </div>
@@ -116,141 +54,99 @@ export default async function Home() {
         </div>
       </header>
 
-      {/* ── FEATURES ───────────────────────────────────── */}
       <section id="features" className="section-pad">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Why GWS</span>
-            <h2>Built to hunt buffering into extinction</h2>
+            <span className="eyebrow">The GWS setup</span>
+            <h2>Two apps. One Great White account.</h2>
             <p>
-              Everything you need to set up, stream, and stay updated — across
-              both of our premium services.
+              We are moving customers away from the old Hush app and into a simpler
+              Great White Streams setup.
             </p>
           </div>
+
           <div className="grid grid-3">
             <div className="card">
+              <div className="ico">🦈</div>
+              <h3>Great White Streams TV</h3>
+              <p>
+                Our own TV app, built specifically for Great White Streams customers
+                with a clean remote-friendly interface.
+              </p>
+            </div>
+            <div className="card">
+              <div className="ico">📺</div>
+              <h3>Waveo</h3>
+              <p>
+                A second supported player. Use Custom login with the GWS DNS and your
+                existing username and password.
+              </p>
+            </div>
+            <div className="card">
+              <div className="ico">🔑</div>
+              <h3>Keep your current login</h3>
+              <p>
+                Before changing apps, copy your username, password and expiration
+                date from Hush. The setup guide shows exactly where to find them.
+              </p>
+            </div>
+            <div className="card">
               <div className="ico">⚡</div>
-              <h3>Blazing servers</h3>
+              <h3>Fast setup</h3>
               <p>
-                Load-balanced, high-bandwidth infrastructure tuned for live
-                sports and 4K without the stutter.
-              </p>
-            </div>
-            <div className="card">
-              <div className="ico">🛠️</div>
-              <h3>Painless setup</h3>
-              <p>
-                Step-by-step guides for Hush and TiviMate. Get running in
-                minutes on Firestick, Android TV, and more.
-              </p>
-            </div>
-            <div className="card">
-              <div className="ico">🔔</div>
-              <h3>Live status updates</h3>
-              <p>
-                Real-time Hush and Pure Vision announcements, pulled straight
-                from our update channels to this page.
-              </p>
-            </div>
-            <div className="card">
-              <div className="ico">🎟️</div>
-              <h3>Free trials</h3>
-              <p>
-                Try before you commit. Request a trial and we&apos;ll get you
-                set up fast.
+                Downloader codes, login settings and the correct DNS are laid out in
+                one customer guide with no guesswork.
               </p>
             </div>
             <div className="card">
               <div className="ico">💬</div>
               <h3>Real support</h3>
               <p>
-                Reach us by email or hop into the Telegram chat. Real humans,
-                quick answers.
+                If something does not work, contact Great White Streams instead of
+                digging through player settings on your own.
               </p>
             </div>
             <div className="card">
-              <div className="ico">🦈</div>
-              <h3>Two apex services</h3>
+              <div className="ico">✅</div>
+              <h3>Built for TV devices</h3>
               <p>
-                Hush and Pure Vision under one roof — pick the pod that fits
-                your devices and your viewing.
+                Designed around Fire TV, Android TV and Google TV devices with simple
+                remote-control navigation.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── ACTION TILES ───────────────────────────────── */}
       <section className="section-pad" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="action-tiles">
             <div className="tile">
-              <span className="tag">Setup</span>
-              <h3>Install Hush</h3>
+              <span className="tag">APP 1</span>
+              <h3>Set up Great White Streams TV</h3>
               <p>
-                Fresh install on a new device? Follow the guided walkthrough to
-                get Hush up and running cleanly.
+                Save your existing account details first, then install and sign into
+                the GWS TV app.
               </p>
-              <Link href="/install" className="btn btn-primary">
-                Open install guide →
+              <Link href="/install#gws-tv" className="btn btn-primary">
+                GWS TV setup →
               </Link>
             </div>
             <div className="tile">
-              <span className="tag">Troubleshoot</span>
-              <h3>Fix TiviMate (Hush)</h3>
+              <span className="tag">APP 2</span>
+              <h3>Set up Waveo</h3>
               <p>
-                Playlist not loading or EPG acting up? Run through the TiviMate
-                fix steps to get back to streaming.
+                Use Downloader code 9378234, choose Custom at login, and use the GWS
+                DNS with your existing username and password.
               </p>
-              <Link href="/install#tivimate" className="btn btn-ghost">
-                Fix TiviMate →
+              <Link href="/install#waveo" className="btn btn-ghost">
+                Waveo setup →
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── UPDATES ────────────────────────────────────── */}
-      {SHOW_UPDATES && (
-      <section id="updates" className="section-pad">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">Status &amp; announcements</span>
-            <h2>Live updates panel</h2>
-            <p>
-              Hush and Pure Vision updates sync automatically from our Telegram
-              channels. Always know what&apos;s happening.
-            </p>
-          </div>
-          <div className="updates-wrap">
-            <Feed
-              title="🦈 Hush"
-              pillClass="src-hush"
-              items={updates.hush}
-              emptyHint="No Hush updates yet. New Telegram posts will appear here automatically."
-            />
-            <Feed
-              title="🌊 Pure Vision"
-              pillClass="src-pv"
-              items={updates.pv}
-              emptyHint="No Pure Vision updates yet. New Telegram posts will appear here automatically."
-            />
-          </div>
-          <div style={{ textAlign: "center", marginTop: 26 }}>
-            <a
-              href={tg}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-ghost"
-            >
-              💬 Join the Telegram chat
-            </a>
-          </div>
-        </div>
-      </section>
-      )}
-
-      {/* ── TRIAL ──────────────────────────────────────── */}
       <section id="trial" className="section-pad">
         <div className="container">
           <div className="grid grid-2" style={{ alignItems: "center" }}>
@@ -263,16 +159,14 @@ export default async function Home() {
                   margin: "14px 0 14px",
                 }}
               >
-                Test the waters, no strings
+                Try Great White Streams
               </h2>
               <p style={{ color: "var(--muted)", marginBottom: 18 }}>
-                Drop your details and we&apos;ll provision a trial and email you
-                the login plus setup steps. Every request lands in our inbox
-                instantly — and in the admin dashboard for tracking.
+                Send your details and we&apos;ll get you set up with the login and
+                app instructions you need.
               </p>
               <p style={{ color: "var(--muted)" }}>
-                Already a member and need help?{" "}
-                <Link href="#contact">Contact us →</Link>
+                Already a member and need help? <Link href="#contact">Contact us →</Link>
               </p>
             </div>
             <TrialForm />
@@ -280,13 +174,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── CONTACT ───────────────────────────────────── */}
       <section id="contact" className="section-pad" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="grid grid-2" style={{ alignItems: "center" }}>
             <ContactForm />
             <div>
-              <span className="eyebrow">Contact</span>
+              <span className="eyebrow">Support</span>
               <h2
                 style={{
                   fontSize: "clamp(28px,4vw,42px)",
@@ -294,11 +187,11 @@ export default async function Home() {
                   margin: "14px 0 14px",
                 }}
               >
-                Talk to a real human
+                Need a hand?
               </h2>
               <p style={{ color: "var(--muted)", marginBottom: 18 }}>
-                Questions about plans, devices, or your account? Send a message
-                and it goes straight to our email. We usually reply same day.
+                Questions about your login, device or app setup? Send a message and
+                we&apos;ll help you get it sorted.
               </p>
               <p style={{ color: "var(--muted)" }}>
                 Prefer chat?{" "}
@@ -311,17 +204,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── CTA BAND ───────────────────────────────────── */}
       <section className="section-pad" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="band">
-            <h2>Ready to join the pod?</h2>
-            <p>
-              Start a free trial today and see why GWS members don&apos;t go
-              back to the shallow end.
-            </p>
-            <Link href="#trial" className="btn btn-primary">
-              Start free trial →
+            <h2>Already a customer?</h2>
+            <p>Start with the customer setup guide before removing Hush.</p>
+            <Link href="/install" className="btn btn-primary">
+              Open customer setup →
             </Link>
           </div>
         </div>
