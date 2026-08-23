@@ -72,7 +72,7 @@ export default function GwsOnlineInstallPage() {
 
             <Step n="2" title="Enter the GWS Online Downloader code">
               Enter the code below exactly and choose <strong>Go</strong>.
-              <CodeBox label="GWS Online Downloader Code" value="9627454" />
+              <CodeBox label="GWS Online Downloader Code" value="6818487" />
             </Step>
 
             <Step n="3" title="Install GWS Online">
