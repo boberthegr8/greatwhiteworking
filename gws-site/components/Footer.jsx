@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FinLogo from "./FinLogo";
+import AppIcon from "./AppIcon";
 
 export default function Footer() {
   const tg = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_URL || "#";
@@ -10,15 +10,15 @@ export default function Footer() {
         <div className="foot-inner">
           <div style={{ maxWidth: 320 }}>
             <Link href="/" className="brand">
-              <FinLogo />
+              <AppIcon size={40} />
               <span>
                 GWS
                 <small>Great White Streams</small>
               </span>
             </Link>
             <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 16 }}>
-              Premium streaming, apex performance. Built for Hush and Pure
-              Vision members.
+              Premium streaming, apex performance. Built for Great White
+              Streams members.
             </p>
           </div>
 
@@ -26,8 +26,7 @@ export default function Footer() {
             <div className="foot-col">
               <h5>Product</h5>
               <Link href="/#features">Features</Link>
-              <Link href="/install">Install Hush</Link>
-              <Link href="/install#tivimate">Fix TiviMate</Link>
+              <Link href="/install">Customer Setup</Link>
               <Link href="/#updates">Updates</Link>
             </div>
             <div className="foot-col">

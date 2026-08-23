@@ -1,12 +1,12 @@
 import Link from "next/link";
-import FinLogo from "./FinLogo";
+import AppIcon from "./AppIcon";
 
 export default function Nav() {
   return (
     <nav className="nav">
       <div className="container nav-inner">
         <Link href="/" className="brand">
-          <FinLogo />
+          <AppIcon size={40} />
           <span>
             GWS
             <small>Great White Streams</small>
@@ -15,7 +15,7 @@ export default function Nav() {
 
         <div className="nav-links">
           <Link href="/#features">Features</Link>
-          <Link href="/install">Install Hush</Link>
+          <Link href="/install">Customer Setup</Link>
           <Link href="/#updates">Updates</Link>
           <Link href="/#trial">Free Trial</Link>
           <Link href="/#contact">Contact</Link>
