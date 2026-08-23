@@ -96,7 +96,7 @@ export default function HushUpdatePage() {
 
           <div className="grid" style={{ gap: 16 }}>
             <Step n="1" title="Open Downloader">Open the <strong>Downloader</strong> app on your Fire TV, Android TV or Google TV device.</Step>
-            <Step n="2" title="Enter the GWS Online code">Enter the code below exactly and choose <strong>Go</strong>.<CodeBox label="GWS Online Downloader Code" value="9627454" /></Step>
+            <Step n="2" title="Enter the GWS Online code">Enter the code below exactly and choose <strong>Go</strong>.<CodeBox label="GWS Online Downloader Code" value="6818487" /></Step>
             <Step n="3" title="Install and open GWS Online">Download the app, choose <strong>Install</strong>, then open <strong>GWS Online</strong>.</Step>
             <Step n="4" title="Choose Xtream">When GWS Online asks you to add your TV service, choose <strong>Xtream</strong>.</Step>
             <Step n="5" title="Enter the Great White server">Enter this address exactly:<CodeBox label="Server / DNS" value="https://ottidns.com" /></Step>
