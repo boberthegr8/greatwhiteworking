@@ -2,252 +2,48 @@ import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
+const IMG_HOME = "data:image/jpeg;base64,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";
+const IMG_SETTINGS = "data:image/jpeg;base64,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";
+const IMG_PLAYLIST = "data:image/jpeg;base64,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";
+const IMG_XTREAM = "data:image/jpeg;base64,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";
+
 export const metadata = {
   title: "Move from Hush TiviMate to Hush-XC — Great White Streams",
-  description:
-    "Step-by-step guide for moving from Hush TiviMate to the stable Hush-XC app without losing your Great White login information.",
+  description: "Step-by-step guide for moving from Hush TiviMate to the stable Hush-XC app.",
 };
 
-function Step({ n, title, children, important = false }) {
+function Shot({ src, alt }) {
   return (
-    <div
-      className="card"
-      style={{
-        display: "flex",
-        gap: 18,
-        borderColor: important ? "rgba(255,206,90,.65)" : undefined,
-      }}
-    >
-      <div
-        className="ico"
-        style={{
-          flex: "0 0 46px",
-          fontWeight: 800,
-          fontSize: 18,
-          color: important ? "#ffd76a" : undefined,
-        }}
-      >
-        {n}
-      </div>
-      <div>
-        <h3>{title}</h3>
-        <div style={{ color: "var(--muted)", fontSize: "14.5px", lineHeight: 1.7 }}>
-          {children}
-        </div>
-      </div>
-    </div>
+    <img src={src} alt={alt} style={{ display: "block", width: "100%", maxWidth: 520, marginTop: 16, borderRadius: 14, border: "1px solid var(--line-strong)" }} />
   );
 }
-
+function Step({ n, title, children, important = false }) {
+  return <div className="card" style={{ display: "flex", gap: 18, borderColor: important ? "rgba(255,206,90,.65)" : undefined }}><div className="ico" style={{ flex: "0 0 46px", fontWeight: 800, fontSize: 18, color: important ? "#ffd76a" : undefined }}>{n}</div><div style={{ width: "100%" }}><h3>{title}</h3><div style={{ color: "var(--muted)", fontSize: "14.5px", lineHeight: 1.7 }}>{children}</div></div></div>;
+}
 function CodeBox({ label, value, warning = false }) {
-  return (
-    <div
-      style={{
-        marginTop: 14,
-        padding: "16px 20px",
-        borderRadius: 12,
-        border: warning
-          ? "1px solid rgba(255,206,90,.65)"
-          : "1px solid var(--line-strong)",
-        background: "rgba(4,11,24,.72)",
-      }}
-    >
-      <div
-        style={{
-          fontSize: 11,
-          fontWeight: 800,
-          letterSpacing: ".16em",
-          textTransform: "uppercase",
-          color: warning ? "#ffd76a" : "var(--muted)",
-          marginBottom: 6,
-        }}
-      >
-        {label}
-      </div>
-      <div
-        style={{
-          fontSize: 28,
-          fontWeight: 900,
-          color: warning ? "#fff" : "var(--cyan)",
-          overflowWrap: "anywhere",
-          fontVariantNumeric: "tabular-nums",
-        }}
-      >
-        {value}
-      </div>
-    </div>
-  );
+  return <div style={{ marginTop: 14, padding: "16px 20px", borderRadius: 12, border: warning ? "1px solid rgba(255,206,90,.65)" : "1px solid var(--line-strong)", background: "rgba(4,11,24,.72)" }}><div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".16em", textTransform: "uppercase", color: warning ? "#ffd76a" : "var(--muted)", marginBottom: 6 }}>{label}</div><div style={{ fontSize: 28, fontWeight: 900, color: warning ? "#fff" : "var(--cyan)", overflowWrap: "anywhere" }}>{value}</div></div>;
 }
 
 export default function HushUpdatePage() {
-  return (
-    <>
-      <Nav />
-
-      <header className="hero" style={{ padding: "72px 0 38px" }}>
-        <div className="container">
-          <span className="eyebrow">GREAT WHITE STREAMS · EXISTING HUSH CUSTOMERS</span>
-          <h1 style={{ fontSize: "clamp(38px,5vw,62px)", margin: "18px 0 14px" }}>
-            Move from Hush TiviMate to Hush-XC
-          </h1>
-          <p className="hero-sub" style={{ maxWidth: 820 }}>
-            Hush-XC is not quite as polished or as pretty as the old TiviMate-style
-            Hush app, but it works, it is stable, and it is the replacement we
-            recommend for existing Hush customers.
-          </p>
-          <div className="hero-cta">
-            <a href="#save-login" className="btn btn-primary">
-              1. Save your Hush login
-            </a>
-            <a href="#hush-xc" className="btn btn-ghost">
-              2. Install Hush-XC
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <section id="save-login" className="section-pad">
-        <div className="container">
-          <div
-            className="band"
-            style={{
-              marginBottom: 34,
-              textAlign: "left",
-              borderColor: "rgba(255,206,90,.55)",
-            }}
-          >
-            <span className="eyebrow" style={{ marginBottom: 14 }}>
-              DO THIS FIRST
-            </span>
-            <h2>Do not uninstall your old Hush app yet</h2>
-            <p>
-              First save your username, password and expiration date. Keep the old
-              Hush app until Hush-XC is installed, logged in and playing properly.
-            </p>
-          </div>
-
-          <div className="section-head" style={{ marginBottom: 30 }}>
-            <span className="eyebrow">STEP 1</span>
-            <h2>Get your account information from Hush</h2>
-          </div>
-
-          <div className="grid" style={{ gap: 16 }}>
-            <Step n="1" title="Open Hush">
-              Open the <strong>Hush</strong> app that is currently working.
-            </Step>
-            <Step n="2" title="Open Settings → Playlists">
-              From the left menu choose <strong>Settings</strong>, then select
-              <strong> Playlists</strong>.
-            </Step>
-            <Step n="3" title="Open the Hush playlist">
-              Select the playlist named <strong>Hush</strong>.
-            </Step>
-            <Step n="4" title="Open Xtream Codes parameters">
-              Scroll down and select <strong>Xtream Codes parameters</strong>.
-            </Step>
-            <Step n="5" title="Save these three items">
-              Take a picture or write down your <strong>Username</strong>,
-              <strong> Password</strong> and <strong>Expiration date</strong>.
-            </Step>
-          </div>
-
-          <div className="card" style={{ marginTop: 18, borderColor: "rgba(56,214,255,.35)" }}>
-            <h3 style={{ marginBottom: 10 }}>Before continuing, make sure you have:</h3>
-            <p style={{ margin: 0, color: "var(--muted)" }}>
-              ✓ Username &nbsp;&nbsp; ✓ Password &nbsp;&nbsp; ✓ Expiration date
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="hush-xc" className="section-pad" style={{ paddingTop: 20 }}>
-        <div className="container">
-          <div className="section-head" style={{ marginBottom: 30 }}>
-            <span className="eyebrow">STEP 2 · RECOMMENDED REPLACEMENT</span>
-            <h2>Install Hush-XC</h2>
-            <p>
-              Hush-XC may look simpler than TiviMate, but it has been the more stable
-              option. For customers moving off the old Hush app, this is the app we
-              recommend using.
-            </p>
-          </div>
-
-          <div className="grid" style={{ gap: 16 }}>
-            <Step n="1" title="Open Downloader">
-              Open the <strong>Downloader</strong> app on your Fire TV, Android TV or
-              Google TV device.
-            </Step>
-
-            <Step n="2" title="Enter the Hush-XC Downloader code">
-              Enter the code below exactly and choose <strong>Go</strong>.
-              <CodeBox label="Hush-XC Downloader Code" value="1124386" />
-            </Step>
-
-            <Step n="3" title="Install and open Hush-XC">
-              When the download finishes, choose <strong>Install</strong>, then open
-              <strong> Hush-XC</strong>.
-            </Step>
-
-            <Step n="4" title="ALLOW access to photos and media" important>
-              When Hush-XC asks for permission to access <strong>photos and media</strong>
-              (the wording may vary slightly by device), choose <strong>ALLOW / YES</strong>.
-              <CodeBox label="Important — do not skip this" value="ALLOW PHOTOS & MEDIA" warning />
-              <p style={{ marginTop: 12 }}>
-                This permission is required for Hush-XC to work properly. If you deny it,
-                the app may not load or save what it needs. If you accidentally choose
-                Deny, open your device&apos;s App Settings for Hush-XC and enable the media/files
-                permission before continuing.
-              </p>
-            </Step>
-
-            <Step n="5" title="Enter the Great White server / DNS">
-              Enter the address below exactly, including <strong>https://</strong>.
-              <CodeBox label="Server / DNS" value="https://ottipdns.com" />
-            </Step>
-
-            <Step n="6" title="Enter your saved Hush login">
-              Enter the exact <strong>username</strong> and <strong>password</strong>
-              you copied from the old Hush app. Watch for accidental spaces.
-            </Step>
-
-            <Step n="7" title="Log in and let Hush-XC load">
-              Continue through login and give the app time to load your channels,
-              movies and series.
-            </Step>
-
-            <Step n="8" title="Test it before removing old Hush">
-              Open Live TV and play a channel. Once Hush-XC is working properly, you
-              can remove the old Hush TiviMate app if you want.
-            </Step>
-          </div>
-
-          <div className="band" style={{ marginTop: 40, textAlign: "left" }}>
-            <h2>Hush-XC not working?</h2>
-            <p>
-              Check the three common problems first: media access was allowed, the DNS
-              is exactly <strong>https://ottipdns.com</strong>, and your username and
-              password match the old Hush app exactly.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="band">
-            <h2>Want to try GWS Online too?</h2>
-            <p>
-              GWS Online is still available, but Hush-XC is the recommended replacement
-              for customers coming from Hush TiviMate because stability comes first.
-            </p>
-            <Link href="/gws-online" className="btn btn-ghost">
-              GWS Online install guide →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  );
+  return <><Nav />
+    <header className="hero" style={{ padding: "72px 0 38px" }}><div className="container"><span className="eyebrow">GREAT WHITE STREAMS · EXISTING HUSH CUSTOMERS</span><h1 style={{ fontSize: "clamp(38px,5vw,62px)", margin: "18px 0 14px" }}>Move from Hush TiviMate to Hush-XC</h1><p className="hero-sub" style={{ maxWidth: 820 }}>Hush-XC is not quite as polished or as pretty as the old TiviMate-style Hush app, but it works, it is stable, and it is the replacement we recommend for existing Hush customers.</p><div className="hero-cta"><a href="#save-login" className="btn btn-primary">1. Save your Hush login</a><a href="#hush-xc" className="btn btn-ghost">2. Install Hush-XC</a></div></div></header>
+    <section id="save-login" className="section-pad"><div className="container"><div className="band" style={{ marginBottom: 34, textAlign: "left", borderColor: "rgba(255,206,90,.55)" }}><span className="eyebrow">DO THIS FIRST</span><h2>Do not uninstall your old Hush app yet</h2><p>First save your username, password and expiration date. Keep the old Hush app until Hush-XC is installed, logged in and playing properly.</p></div><div className="section-head"><span className="eyebrow">STEP 1</span><h2>Get your account information from Hush</h2></div><div className="grid" style={{ gap: 16 }}>
+      <Step n="1" title="Open Hush">Open the <strong>Hush</strong> app that is currently working.<Shot src={IMG_HOME} alt="Hush home screen showing Settings" /></Step>
+      <Step n="2" title="Open Settings → Playlists">From the left menu choose <strong>Settings</strong>, then select <strong>Playlists</strong>.<Shot src={IMG_SETTINGS} alt="Hush settings screen with Playlists highlighted" /></Step>
+      <Step n="3" title="Open the Hush playlist">Select the playlist named <strong>Hush</strong>.<Shot src={IMG_PLAYLIST} alt="Hush playlist selection screen" /></Step>
+      <Step n="4" title="Open Xtream Codes parameters">Scroll down and select <strong>Xtream Codes parameters</strong>.<Shot src={IMG_XTREAM} alt="Hush Xtream Codes parameters option highlighted" /></Step>
+      <Step n="5" title="Save these three items">Take a picture or write down your <strong>Username</strong>, <strong>Password</strong> and <strong>Expiration date</strong>. We intentionally do not show a sample login screenshot here because those credentials are private.</Step>
+    </div><div className="card" style={{ marginTop: 18, borderColor: "rgba(56,214,255,.35)" }}><h3>Before continuing, make sure you have:</h3><p style={{ margin: 0, color: "var(--muted)" }}>✓ Username &nbsp;&nbsp; ✓ Password &nbsp;&nbsp; ✓ Expiration date</p></div></div></section>
+    <section id="hush-xc" className="section-pad" style={{ paddingTop: 20 }}><div className="container"><div className="section-head"><span className="eyebrow">STEP 2 · RECOMMENDED REPLACEMENT</span><h2>Install Hush-XC</h2><p>Hush-XC may look simpler than TiviMate, but it has been the more stable option. For customers moving off the old Hush app, this is the app we recommend using.</p></div><div className="grid" style={{ gap: 16 }}>
+      <Step n="1" title="Open Downloader">Open the <strong>Downloader</strong> app on your Fire TV, Android TV or Google TV device.</Step>
+      <Step n="2" title="Enter the Hush-XC Downloader code">Enter the code below exactly and choose <strong>Go</strong>.<CodeBox label="Hush-XC Downloader Code" value="1124386" /></Step>
+      <Step n="3" title="Install and open Hush-XC">When the download finishes, choose <strong>Install</strong>, then open <strong>Hush-XC</strong>.</Step>
+      <Step n="4" title="ALLOW access to photos and media" important>When Hush-XC first opens it will ask for permission to access <strong>photos and media</strong>. You <strong>must choose ALLOW / YES</strong>.<CodeBox label="IMPORTANT — DO NOT SKIP THIS" value="ALLOW PHOTOS & MEDIA" warning /><p style={{ marginTop: 12 }}>This is one of the most important setup steps. If media access is denied, Hush-XC may not load or save what it needs. If you accidentally choose Deny, open your device&apos;s App Settings for Hush-XC and turn the media/files permission on before continuing.</p></Step>
+      <Step n="5" title="Enter the Great White server / DNS">Enter the address below exactly, including <strong>https://</strong>.<CodeBox label="Server / DNS" value="https://ottipdns.com" /></Step>
+      <Step n="6" title="Enter your saved Hush login">Enter the exact <strong>username</strong> and <strong>password</strong> you copied from the old Hush app. Watch for accidental spaces.</Step>
+      <Step n="7" title="Log in and let Hush-XC load">Continue through login and give the app time to load your channels, movies and series.</Step>
+      <Step n="8" title="Test it before removing old Hush">Open Live TV and play a channel. Once Hush-XC is working properly, you can remove the old Hush TiviMate app if you want.</Step>
+    </div><div className="band" style={{ marginTop: 40, textAlign: "left" }}><h2>Hush-XC not working?</h2><p>Check these three things first: <strong>media access was allowed</strong>, the DNS is exactly <strong>https://ottipdns.com</strong>, and your username/password match the old Hush app exactly.</p></div></div></section>
+    <section className="section-pad" style={{ paddingTop: 0 }}><div className="container"><div className="band"><h2>Want to try GWS Online too?</h2><p>GWS Online is still available, but Hush-XC is the recommended replacement for customers coming from Hush TiviMate because stability comes first.</p><Link href="/gws-online" className="btn btn-ghost">GWS Online install guide →</Link></div></div></section>
+    <Footer /></>;
 }
