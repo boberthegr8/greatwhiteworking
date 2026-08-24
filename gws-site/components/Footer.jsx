@@ -18,15 +18,15 @@ export default function Footer() {
               </span>
             </Link>
             <p style={{ color: "var(--muted)", fontSize: 14, marginTop: 16 }}>
-              Great White Streams apps, installation guides and customer support.
+              Great White Streams setup guides, apps and customer support.
             </p>
           </div>
 
           <div className="foot-links">
             <div className="foot-col">
               <h5>Setup</h5>
-              <Link href="/gws-online">How to install GWS Online</Link>
-              <Link href="/hush-update">How to update from Hush TiviMate</Link>
+              <Link href="/hush-update">Move to Hush-XC</Link>
+              <Link href="/gws-online">GWS Online</Link>
             </div>
             <div className="foot-col">
               <h5>Get Started</h5>
