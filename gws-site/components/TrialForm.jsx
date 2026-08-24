@@ -55,9 +55,9 @@ export default function TrialForm() {
       </div>
       <div className="field">
         <label htmlFor="t-service">Preferred app</label>
-        <select id="t-service" name="service" defaultValue="Great White Streams TV">
-          <option>Great White Streams TV</option>
-          <option>Waveo</option>
+        <select id="t-service" name="service" defaultValue="Hush-XC">
+          <option>Hush-XC</option>
+          <option>GWS Online</option>
           <option>Not sure yet</option>
         </select>
       </div>
