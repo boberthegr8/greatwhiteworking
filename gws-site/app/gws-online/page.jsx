@@ -48,11 +48,13 @@ export default function GwsOnlineInstallPage() {
             How to install GWS Online
           </h1>
           <p className="hero-sub" style={{ maxWidth: 760 }}>
-            This is the main Great White Streams app. Have your Great White username and password ready before you begin.
+            GWS Online is still available as an alternate Great White Streams app.
+            Existing Hush TiviMate customers should use Hush-XC as the recommended
+            stable replacement.
           </p>
           <div className="hero-cta">
-            <a href="#install" className="btn btn-primary">Start installation →</a>
-            <Link href="/hush-update" className="btn btn-ghost">Coming from Hush TiviMate?</Link>
+            <a href="#install" className="btn btn-primary">Install GWS Online →</a>
+            <Link href="/hush-update" className="btn btn-ghost">Moving from Hush? Use Hush-XC</Link>
           </div>
         </div>
       </header>
@@ -85,7 +87,7 @@ export default function GwsOnlineInstallPage() {
 
             <Step n="5" title="Enter the Great White server">
               Enter the server address exactly as shown below.
-              <CodeBox label="Server / DNS" value="https://ottidns.com" />
+              <CodeBox label="Server / DNS" value="https://ottipdns.com" />
             </Step>
 
             <Step n="6" title="Enter your Great White login">
@@ -103,8 +105,11 @@ export default function GwsOnlineInstallPage() {
 
           <div className="band" style={{ marginTop: 40, textAlign: "left" }}>
             <h2>Already using Hush TiviMate?</h2>
-            <p>Do not uninstall Hush yet. First copy your username, password and expiration date, then follow the migration guide.</p>
-            <Link href="/hush-update" className="btn btn-primary">How to update from Hush TiviMate →</Link>
+            <p>
+              Use Hush-XC for the migration. It is not as polished visually, but it is
+              the more stable replacement we recommend.
+            </p>
+            <Link href="/hush-update" className="btn btn-primary">Move to Hush-XC →</Link>
           </div>
         </div>
       </section>
