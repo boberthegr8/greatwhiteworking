@@ -14,8 +14,8 @@ export default function Nav() {
         </Link>
 
         <div className="nav-links">
-          <Link href="/gws-online">How to install GWS Online</Link>
-          <Link href="/hush-update">How to update from Hush TiviMate</Link>
+          <Link href="/hush-update">Hush-XC Setup</Link>
+          <Link href="/gws-online">GWS Online</Link>
           <Link href="/#trial">Free Trial</Link>
           <Link href="/#contact">Support</Link>
         </div>
@@ -24,8 +24,8 @@ export default function Nav() {
           <Link href="/admin" className="btn btn-ghost">
             Admin
           </Link>
-          <Link href="/gws-online" className="btn btn-primary">
-            Install GWS Online
+          <Link href="/hush-update" className="btn btn-primary">
+            Hush-XC Guide
           </Link>
         </div>
       </div>
