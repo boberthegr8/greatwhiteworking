@@ -8,12 +8,14 @@ import Footer from "@/components/Footer";
 const APPS = [
   {
     name: "GWS Online",
-    badge: "PRIMARY",
+    badge: "NEW / IMPROVING",
     code: "6818487",
     description: "Great White Streams' TV-first app and newest GWS interface.",
     downloadUrl: "https://github.com/boberthegr8/GreatWhiteTV-Own/releases/latest/download/GWSOnline.apk",
     notes: [
       "Install through Downloader with code 6818487.",
+      "GWS Online is still being refined for Hush customers. Live TV is usable, but VOD playback is not working yet.",
+      "For the most reliable Hush replacement right now, use Hush-XC.",
       "Use the customer's authorized GWS credentials when prompted.",
     ],
   },
