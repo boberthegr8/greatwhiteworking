@@ -59,6 +59,18 @@ export default function GwsOnlineInstallPage() {
         </div>
       </header>
 
+      <section className="section-pad" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="card" style={{ borderColor: "rgba(53,226,209,.28)", background: "rgba(53,226,209,.05)" }}>
+            <span className="eyebrow">CURRENT APP STATUS</span>
+            <h3 style={{ marginTop: 10 }}>GWS Online is still improving for Hush customers.</h3>
+            <p style={{ color: "var(--muted)", marginTop: 8 }}>
+              Live TV is usable, but VOD playback is not working yet. If you are moving from Hush and want the most reliable setup right now, Hush-XC is still the recommended option.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="install" className="section-pad">
         <div className="container">
           <div className="section-head" style={{ marginBottom: 30 }}>
@@ -98,8 +110,8 @@ export default function GwsOnlineInstallPage() {
               Continue with the Xtream setup and start the import. Let GWS Online finish loading your channels, movies, series and guide data.
             </Step>
 
-            <Step n="8" title="You are ready">
-              Once the first sync finishes, open Live TV, Movies or Series and confirm everything is working normally.
+            <Step n="8" title="Check Live TV first">
+              Once the first sync finishes, open <strong>Live TV</strong> and confirm your channels are working. VOD playback is still being worked on, so Movies and Series may load in the library but are not currently expected to play.
             </Step>
           </div>
 
