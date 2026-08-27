@@ -16,7 +16,6 @@ export default function Nav() {
         <div className="nav-links">
           <Link href="/firestick-setup">Firestick Setup</Link>
           <Link href="/hush-update">Hush-XC Setup</Link>
-          <Link href="/gws-online">GWS Online</Link>
           <Link href="/#trial">Free Trial</Link>
           <Link href="/#contact">Support</Link>
         </div>
@@ -25,8 +24,8 @@ export default function Nav() {
           <Link href="/admin" className="btn btn-ghost">
             Admin
           </Link>
-          <Link href="/firestick-setup" className="btn btn-primary">
-            App Setup
+          <Link href="/hush-update" className="btn btn-primary">
+            Hush-XC Guide
           </Link>
         </div>
       </div>
