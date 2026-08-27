@@ -21,21 +21,21 @@ export default function Home() {
               Your TV. <span className="accent">Great White</span> simple.
             </h1>
             <p className="hero-sub">
-              Moving from the old Hush TiviMate app? Hush-XC is now our recommended
-              replacement. It may not look quite as polished, but it works and it is stable.
+              Moving from the old Hush TiviMate app? Use Hush-XC. Current Hush customers
+              should not install GWS Online right now.
             </p>
             <div className="hero-cta">
               <Link href="/hush-update" className="btn btn-primary">
                 Move to Hush-XC →
               </Link>
-              <Link href="/gws-online" className="btn btn-ghost">
-                GWS Online
+              <Link href="/firestick-setup" className="btn btn-ghost">
+                Firestick Setup
               </Link>
             </div>
             <div className="hero-stats">
               <div className="stat">
                 <strong>HUSH-XC</strong>
-                <span>Recommended replacement</span>
+                <span>For Hush customers</span>
               </div>
               <div className="stat">
                 <strong>1124386</strong>
@@ -57,10 +57,10 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">The GWS setup</span>
-            <h2>Hush-XC for stability. GWS Online as an option.</h2>
+            <h2>Hush customer? Use Hush-XC.</h2>
             <p>
-              Existing Hush customers should move to Hush-XC. GWS Online remains
-              available for anyone who wants to try our newer interface.
+              Hush-XC is the current migration path for existing Hush customers. Do not
+              install GWS Online for a Hush account right now; VOD playback is not ready yet.
             </p>
           </div>
 
@@ -69,16 +69,16 @@ export default function Home() {
               <div className="ico">📺</div>
               <h3>Hush-XC</h3>
               <p>
-                The recommended replacement for the old Hush TiviMate app. It is not
-                as pretty, but it is dependable and stable.
+                The recommended replacement for the old Hush TiviMate app. It is dependable,
+                stable and the app Hush customers should use right now.
               </p>
             </div>
             <div className="card">
-              <div className="ico">🦈</div>
-              <h3>GWS Online</h3>
+              <div className="ico">⚠️</div>
+              <h3>GWS Online is not for Hush yet</h3>
               <p>
-                Our newer Great White Streams app. It remains available, but Hush-XC
-                is the preferred migration path for existing Hush customers.
+                Current Hush customers should not install GWS Online. VOD playback is still
+                being worked on. Use Hush-XC until we say otherwise.
               </p>
             </div>
             <div className="card">
@@ -90,11 +90,11 @@ export default function Home() {
               </p>
             </div>
             <div className="card">
-              <div className="ico">⚠️</div>
-              <h3>Allow photos & media</h3>
+              <div className="ico">✅</div>
+              <h3>Keep Hush installed</h3>
               <p>
-                Hush-XC asks for access to photos and media the first time it opens.
-                Choose Allow / Yes. This step is important for the app to work properly.
+                Do not remove the old Hush app until Hush-XC is installed, logged in and
+                confirmed working.
               </p>
             </div>
             <div className="card">
@@ -121,7 +121,7 @@ export default function Home() {
         <div className="container">
           <div className="action-tiles">
             <div className="tile">
-              <span className="tag">RECOMMENDED</span>
+              <span className="tag">HUSH CUSTOMERS</span>
               <h3>Move from Hush TiviMate to Hush-XC</h3>
               <p>
                 Save your existing Hush username, password and expiration date first,
@@ -132,14 +132,14 @@ export default function Home() {
               </Link>
             </div>
             <div className="tile">
-              <span className="tag">ALTERNATE APP</span>
-              <h3>GWS Online</h3>
+              <span className="tag">IMPORTANT</span>
+              <h3>Do not use GWS Online for Hush right now</h3>
               <p>
-                GWS Online is still available if you want to try it, but Hush-XC is
-                the stable replacement we recommend for current Hush customers.
+                GWS Online is still being developed for the Hush setup and VOD does not
+                play correctly yet. Hush customers should use Hush-XC.
               </p>
-              <Link href="/gws-online" className="btn btn-ghost">
-                GWS Online install guide →
+              <Link href="/firestick-setup" className="btn btn-ghost">
+                View current app setup →
               </Link>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function Home() {
         <div className="container">
           <div className="band">
             <h2>Still using Hush TiviMate?</h2>
-            <p>Start with the Hush-XC migration guide and keep the old Hush app installed until the new one is working.</p>
+            <p>Use Hush-XC and keep the old Hush app installed until the new one is working. Do not install GWS Online for Hush right now.</p>
             <Link href="/hush-update" className="btn btn-primary">
               Move to Hush-XC →
             </Link>
