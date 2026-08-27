@@ -3,8 +3,8 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "How to Install GWS Online — Great White Streams",
-  description: "Step-by-step Great White Streams GWS Online installation guide.",
+  title: "GWS Online — Great White Streams",
+  description: "Great White Streams GWS Online installation information.",
 };
 
 function Step({ n, title, children }) {
@@ -45,28 +45,27 @@ export default function GwsOnlineInstallPage() {
         <div className="container">
           <span className="eyebrow">GREAT WHITE STREAMS · GWS ONLINE</span>
           <h1 style={{ fontSize: "clamp(38px,5vw,62px)", margin: "18px 0 14px" }}>
-            How to install GWS Online
+            GWS Online
           </h1>
           <p className="hero-sub" style={{ maxWidth: 760 }}>
-            GWS Online is still available as an alternate Great White Streams app.
-            Existing Hush TiviMate customers should use Hush-XC as the recommended
-            stable replacement.
+            GWS Online is still under development for some Great White setups. If you are currently using Hush, do not install GWS Online right now.
           </p>
           <div className="hero-cta">
-            <a href="#install" className="btn btn-primary">Install GWS Online →</a>
-            <Link href="/hush-update" className="btn btn-ghost">Moving from Hush? Use Hush-XC</Link>
+            <Link href="/hush-update" className="btn btn-primary">Hush customer? Use Hush-XC →</Link>
+            <a href="#install" className="btn btn-ghost">Install only if directed</a>
           </div>
         </div>
       </header>
 
       <section className="section-pad" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div className="card" style={{ borderColor: "rgba(53,226,209,.28)", background: "rgba(53,226,209,.05)" }}>
-            <span className="eyebrow">CURRENT APP STATUS</span>
-            <h3 style={{ marginTop: 10 }}>GWS Online is still improving for Hush customers.</h3>
-            <p style={{ color: "var(--muted)", marginTop: 8 }}>
-              Live TV is usable, but VOD playback is not working yet. If you are moving from Hush and want the most reliable setup right now, Hush-XC is still the recommended option.
+          <div className="band" style={{ textAlign: "left" }}>
+            <span className="eyebrow">IMPORTANT FOR HUSH CUSTOMERS</span>
+            <h2>Do not install GWS Online if you currently use Hush.</h2>
+            <p>
+              VOD playback is not working correctly with the Hush setup yet. Use Hush-XC instead and keep your existing Hush app installed until the new setup is confirmed working.
             </p>
+            <Link href="/hush-update" className="btn btn-primary">Go to Hush-XC setup →</Link>
           </div>
         </div>
       </section>
@@ -75,52 +74,49 @@ export default function GwsOnlineInstallPage() {
         <div className="container">
           <div className="section-head" style={{ marginBottom: 30 }}>
             <span className="eyebrow">INSTALLATION</span>
-            <h2>Install GWS Online with Downloader</h2>
-            <p>Follow these steps in order on your Fire TV, Android TV or Google TV device.</p>
+            <h2>Only continue if you were directed to use GWS Online</h2>
+            <p>If you are a current Hush customer, stop here and use the Hush-XC guide instead.</p>
           </div>
 
           <div className="grid" style={{ gap: 16 }}>
-            <Step n="1" title="Open Downloader">
+            <Step n="1" title="Confirm this is the correct app">
+              Current Hush customers should <strong>not</strong> continue with this installation. Use <Link href="/hush-update">Hush-XC</Link> instead.
+            </Step>
+
+            <Step n="2" title="Open Downloader">
               Open the <strong>Downloader</strong> app on your TV device.
             </Step>
 
-            <Step n="2" title="Enter the GWS Online Downloader code">
+            <Step n="3" title="Enter the GWS Online Downloader code">
               Enter the code below exactly and choose <strong>Go</strong>.
               <CodeBox label="GWS Online Downloader Code" value="6818487" />
             </Step>
 
-            <Step n="3" title="Install GWS Online">
+            <Step n="4" title="Install GWS Online">
               When the download finishes, choose <strong>Install</strong>. After installation, open <strong>GWS Online</strong>.
             </Step>
 
-            <Step n="4" title="Choose Xtream">
+            <Step n="5" title="Choose Xtream">
               When GWS Online asks you to add your TV service, choose <strong>Xtream</strong>.
             </Step>
 
-            <Step n="5" title="Enter the Great White server">
+            <Step n="6" title="Enter the Great White server">
               Enter the server address exactly as shown below.
               <CodeBox label="Server / DNS" value="https://ottipdns.com" />
             </Step>
 
-            <Step n="6" title="Enter your Great White login">
+            <Step n="7" title="Enter your Great White login">
               Enter your <strong>username</strong> and <strong>password</strong>. Check for accidental spaces before or after either one.
             </Step>
 
-            <Step n="7" title="Start the import">
-              Continue with the Xtream setup and start the import. Let GWS Online finish loading your channels, movies, series and guide data.
-            </Step>
-
-            <Step n="8" title="Check Live TV first">
-              Once the first sync finishes, open <strong>Live TV</strong> and confirm your channels are working. VOD playback is still being worked on, so Movies and Series may load in the library but are not currently expected to play.
+            <Step n="8" title="Start the import">
+              Continue with the Xtream setup and start the import. Let GWS Online finish loading your available data.
             </Step>
           </div>
 
           <div className="band" style={{ marginTop: 40, textAlign: "left" }}>
             <h2>Already using Hush TiviMate?</h2>
-            <p>
-              Use Hush-XC for the migration. It is not as polished visually, but it is
-              the more stable replacement we recommend.
-            </p>
+            <p>Do not install GWS Online right now. Move to Hush-XC instead.</p>
             <Link href="/hush-update" className="btn btn-primary">Move to Hush-XC →</Link>
           </div>
         </div>
