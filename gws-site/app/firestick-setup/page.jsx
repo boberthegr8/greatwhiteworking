@@ -7,27 +7,28 @@ import Footer from "@/components/Footer";
 
 const APPS = [
   {
-    name: "GWS Online",
-    badge: "NEW / IMPROVING",
-    code: "6818487",
-    description: "Great White Streams' TV-first app and newest GWS interface.",
-    downloadUrl: "https://github.com/boberthegr8/GreatWhiteTV-Own/releases/latest/download/GWSOnline.apk",
-    notes: [
-      "Install through Downloader with code 6818487.",
-      "GWS Online is still being refined for Hush customers. Live TV is usable, but VOD playback is not working yet.",
-      "For the most reliable Hush replacement right now, use Hush-XC.",
-      "Use the customer's authorized GWS credentials when prompted.",
-    ],
-  },
-  {
     name: "Hush-XC",
-    badge: "RECOMMENDED XC",
+    badge: "HUSH USERS — USE THIS",
     code: "1124386",
-    description: "Recommended Xtream Codes player for stable username, password and server login.",
+    description: "The current recommended app for existing Hush customers. Use this for your Hush migration and Xtream login.",
     notes: [
       "Downloader code: 1124386.",
       "Server / DNS: https://ottipdns.com",
       "Recover an existing Hush login at Settings → Playlists → Hush → Xtream Codes Parameters.",
+      "Keep the old Hush app installed until Hush-XC is confirmed working.",
+    ],
+  },
+  {
+    name: "GWS Online",
+    badge: "NOT FOR HUSH",
+    code: "6818487",
+    description: "Newer GWS interface for testing and specifically directed installs. Current Hush customers should not install GWS Online right now.",
+    downloadUrl: "https://github.com/boberthegr8/GreatWhiteTV-Own/releases/latest/download/GWSOnline.apk",
+    notes: [
+      "Hush customers: DO NOT install GWS Online right now — use Hush-XC instead.",
+      "VOD playback is not working correctly for the Hush setup yet.",
+      "Use Downloader code 6818487 only if Great White Streams has specifically directed you to use GWS Online.",
+      "Use the customer's authorized GWS credentials when prompted.",
     ],
   },
   {
@@ -89,12 +90,25 @@ export default function FirestickSetupPage() {
         </div>
       </header>
 
+      <section className="section-pad" style={{ paddingBottom: 0 }}>
+        <div className="container">
+          <div className="band" style={{ textAlign: "left" }}>
+            <span className="eyebrow">CURRENT HUSH INSTRUCTIONS</span>
+            <h2>If you are using Hush, install Hush-XC — not GWS Online.</h2>
+            <p>
+              GWS Online is not ready for Hush customers yet because VOD playback is not working correctly. Keep your existing Hush app and move to Hush-XC using Downloader code <strong>1124386</strong>.
+            </p>
+            <Link href="/hush-update" className="btn btn-primary">Open Hush-XC guide →</Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section-pad">
         <div className="container">
           <div className="section-head">
             <span className="eyebrow">App library</span>
             <h2>Choose the app. Enter the code.</h2>
-            <p>These are the current Great White Streams setup options.</p>
+            <p>These are the current Great White Streams setup options. Hush customers should use Hush-XC.</p>
           </div>
 
           <div className="grid grid-2">
@@ -137,7 +151,7 @@ export default function FirestickSetupPage() {
         <div className="container">
           <div className="band">
             <h2>Moving a customer off the old Hush app?</h2>
-            <p>Save the username, password and expiration date before removing anything. Keep the old app installed until Hush-XC is confirmed working.</p>
+            <p>Save the username, password and expiration date before removing anything. Keep the old Hush app installed until Hush-XC is confirmed working.</p>
             <Link href="/hush-update" className="btn btn-primary">Open Hush-XC guide →</Link>
           </div>
         </div>
