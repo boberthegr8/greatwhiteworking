@@ -4,194 +4,126 @@ import { useState } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const APPS = [
-  {
-    step: "1",
-    name: "Waveo / Neighbourhood",
-    code: "9378234",
-    color: "var(--cyan)",
-    label: "MAIN SERVICE — START HERE",
-    description: "This is the paid Great White Streams service — the one you're paying for. Use it for Live TV, sports, pay-per-view, movies, TV series and video on demand.",
-    best: "TV • SPORTS • PPV • MOVIES • SERIES",
-  },
-  {
-    step: "2",
-    name: "TizenTube",
-    code: "6366500",
-    color: "#b45be3",
-    label: "YOUTUBE WITHOUT THE ADS",
-    description: "TizenTube is the YouTube option included in this setup. Open it when you want to watch YouTube without the usual ad interruptions.",
-    best: "YOUTUBE",
-  },
-  {
-    step: "3",
-    name: "Stremio",
-    code: "8878594",
-    color: "var(--ok)",
-    label: "FREE BONUS — USE IT WHILE YOU CAN",
-    description: "Stremio is installed FREE as a bonus. It is not part of what you are paying Great White Streams for. Treat it as temporary: GWS expects this setup to eventually stop working or change.",
-    best: "FREE BONUS • USE IT WHILE YOU CAN",
-  },
+const apps = [
+  { n: 4, name: "Waveo / Neighbourhood", code: "9378234", color: "var(--cyan)", use: "YOUR PAID TV SERVICE", detail: "Live TV • Sports • PPV • Movies • Series • VOD", note: "This is the main Great White Streams app — the service you are paying for." },
+  { n: 5, name: "TizenTube", code: "6366500", color: "#b45be3", use: "YOUTUBE", detail: "YouTube without the usual ad interruptions", note: "Open TizenTube whenever you want to watch YouTube." },
+  { n: 6, name: "Stremio", code: "8878594", color: "var(--ok)", use: "FREE BONUS", detail: "Use it while you can", note: "FREE extra. You are NOT paying for Stremio. It will eventually stop working or change." },
 ];
 
-const installSteps = [
-  ["Open Downloader", "From the Fire TV home screen, open the Downloader app. If Downloader is not installed, search for Downloader in the Amazon Appstore and install it first."],
-  ["Enter the Downloader code", "Select the URL/code box in Downloader, type the code shown for the app, then select Go. Wait for the download page or APK download to begin."],
-  ["Install the app", "When the Android installer appears, choose Install. Wait for the installation to finish, then choose Done. You can delete the downloaded APK when Downloader asks — the installed app stays on the device."],
-  ["Repeat for all three apps", "Install Waveo / Neighbourhood first, then TizenTube, then Stremio. When finished, return to the Fire TV Apps screen and open each app once."],
-];
+function Step({ number, title, children, color = "var(--cyan)" }) {
+  return (
+    <div className="card" style={{ marginBottom: 18, borderLeft: `5px solid ${color}`, padding: 28 }}>
+      <div style={{ display:"flex", gap:18, alignItems:"flex-start" }}>
+        <div style={{ minWidth:48, height:48, borderRadius:"50%", display:"grid", placeItems:"center", background:color, color:"#03101f", fontWeight:900, fontSize:22 }}>{number}</div>
+        <div style={{ flex:1 }}><h3 style={{ fontSize:24, marginBottom:10 }}>{title}</h3>{children}</div>
+      </div>
+    </div>
+  );
+}
 
 export default function FirestickSetupPage() {
+  const [oldUser, setOldUser] = useState(null);
   const [copied, setCopied] = useState("");
 
-  async function copyCode(code, name) {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(name);
-      setTimeout(() => setCopied(""), 1500);
-    } catch {}
+  async function copy(code, name) {
+    try { await navigator.clipboard.writeText(code); setCopied(name); setTimeout(()=>setCopied(""),1400); } catch {}
   }
 
   return (
     <>
       <Nav />
-
-      <header className="hero" style={{ minHeight: "auto", paddingBottom: 52 }}>
+      <header className="hero" style={{ minHeight:"auto", padding:"68px 0 38px" }}>
         <div className="caustics" />
-        <div className="container" style={{ position: "relative", zIndex: 1, paddingTop: 62 }}>
-          <span className="eyebrow">● GREAT WHITE STREAMS SETUP</span>
-          <h1 style={{ maxWidth: 900 }}>
-            Your complete <span className="accent">3-app streaming setup.</span>
-          </h1>
-          <p className="hero-sub" style={{ maxWidth: 760 }}>
-            Three apps. Three jobs. We use Downloader for all three. Follow this guide from top to bottom and your device will be ready to go.
-          </p>
-          <div className="hero-stats">
-            <div className="stat"><strong>1</strong><span>Waveo / Neighbourhood</span></div>
-            <div className="stat"><strong>2</strong><span>TizenTube</span></div>
-            <div className="stat"><strong>3</strong><span>Stremio</span></div>
-          </div>
+        <div className="container" style={{ position:"relative", zIndex:1, textAlign:"center" }}>
+          <span className="eyebrow">GREAT WHITE STREAMS</span>
+          <h1 style={{ maxWidth:900, margin:"20px auto 14px" }}>Set up your Firestick.<br/><span className="accent">Just follow the numbers.</span></h1>
+          <p className="hero-sub" style={{ margin:"0 auto", maxWidth:680 }}>Do each step in order. Don't skip ahead.</p>
         </div>
       </header>
 
-      <section className="section-pad" style={{ paddingTop: 24, paddingBottom: 24 }}>
-        <div className="container">
-          <div className="band" style={{ textAlign: "left", borderColor: "rgba(255,206,90,.45)", background: "linear-gradient(150deg, rgba(90,62,10,.28), rgba(8,18,38,.85))" }}>
-            <span className="eyebrow" style={{ color: "var(--warn)" }}>BEFORE YOU START</span>
-            <h2 style={{ marginTop: 16 }}>Coming from Hush or PureVision? Start clean.</h2>
-            <p style={{ marginLeft: 0, maxWidth: 780 }}>
-              We recommend a full factory reset before installing this new three-app setup. It clears out the old IPTV apps, settings and leftover files so you are starting from a clean device. <strong style={{ color: "var(--foam)" }}>A factory reset erases apps, accounts and local settings</strong>, so make sure you know your Amazon login and save anything you need first.
-            </p>
-            <p style={{ marginLeft: 0, maxWidth: 780, marginBottom: 0 }}>
-              Fire TV: <strong style={{ color: "var(--foam)" }}>Settings → My Fire TV → Reset to Factory Defaults → Reset.</strong> After the Firestick restarts, complete the normal Amazon setup, install Downloader, then return to this guide.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-pad" style={{ paddingBottom: 34 }}>
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">STEP ZERO</span>
-            <h2>Allow Downloader to install apps.</h2>
-            <p>Fire TV blocks apps from outside the Amazon Appstore until you give Downloader permission.</p>
-          </div>
-          <div className="grid grid-2">
-            <div className="card">
-              <div className="ico">⚙️</div>
-              <h3>Enable Unknown Sources</h3>
-              <p><strong style={{ color: "var(--foam)" }}>Settings → My Fire TV → Developer Options → Install Unknown Apps → Downloader → ON.</strong></p>
-              <p>On some Fire TV versions the wording may be <strong style={{ color: "var(--foam)" }}>Apps from Unknown Sources</strong>. Turn it on for Downloader.</p>
-            </div>
-            <div className="card">
-              <div className="ico">🔓</div>
-              <h3>Developer Options missing?</h3>
-              <p>Go to <strong style={{ color: "var(--foam)" }}>Settings → My Fire TV → About</strong>. Highlight the name of your Fire TV device and press the centre/select button on the remote <strong style={{ color: "var(--foam)" }}>7 times</strong>.</p>
-              <p>Go back one screen. Developer Options should now appear. Open it and allow Downloader.</p>
+      <main className="section-pad" style={{ paddingTop:24 }}>
+        <div className="container" style={{ maxWidth:900 }}>
+          <div className="band" style={{ padding:32, marginBottom:28 }}>
+            <span className="eyebrow" style={{ color:"var(--warn)" }}>START HERE</span>
+            <h2 style={{ marginTop:15 }}>Were you using Hush or PureVision on this device?</h2>
+            <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap", marginTop:22 }}>
+              <button className="btn btn-primary" style={{ minWidth:170 }} onClick={()=>setOldUser(true)}>YES</button>
+              <button className="btn btn-ghost" style={{ minWidth:170 }} onClick={()=>setOldUser(false)}>NO</button>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="section-pad" style={{ paddingTop: 34 }}>
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">YOUR 3 APPS</span>
-            <h2>Install them in this order.</h2>
-            <p>Open Downloader for each app and enter the code exactly as shown.</p>
-          </div>
+          {oldUser === true && (
+            <div className="band" style={{ textAlign:"left", padding:30, marginBottom:28, borderColor:"rgba(255,206,90,.5)" }}>
+              <h2>⚠️ Factory reset first</h2>
+              <p style={{ marginLeft:0, maxWidth:"none" }}>We recommend starting clean. <strong style={{color:"var(--foam)"}}>This erases your apps, accounts and settings.</strong> Make sure you know your Amazon login first.</p>
+              <p style={{ marginLeft:0, maxWidth:"none", marginBottom:0 }}><strong style={{color:"var(--warn)"}}>Settings → My Fire TV → Reset to Factory Defaults → Reset</strong></p>
+              <p style={{ marginLeft:0, maxWidth:"none", marginBottom:0 }}>After setup finishes, come back here and continue with Step 1.</p>
+            </div>
+          )}
 
-          <div className="grid grid-3">
-            {APPS.map((app) => (
-              <div className="card" key={app.name} style={{ display: "flex", flexDirection: "column", borderTop: `4px solid ${app.color}` }}>
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 14, alignItems: "center" }}>
-                  <span style={{ width: 42, height: 42, borderRadius: "50%", display: "grid", placeItems: "center", background: app.color, color: "#03101f", fontWeight: 900, fontSize: 20 }}>{app.step}</span>
-                  <span className="tag" style={{ color: app.color }}>{app.label}</span>
+          {oldUser !== null && (
+            <>
+              <Step number="1" title="Install Downloader">
+                <p>On the Firestick home screen, search for <strong style={{color:"var(--foam)"}}>Downloader</strong>. Install the orange Downloader app from the Amazon Appstore, then open it.</p>
+              </Step>
+
+              <Step number="2" title="Turn on Unknown Sources">
+                <p><strong style={{color:"var(--foam)"}}>Settings → My Fire TV → Developer Options → Install Unknown Apps → Downloader → ON</strong></p>
+                <div style={{ padding:16, borderRadius:12, background:"rgba(255,206,90,.08)", border:"1px solid rgba(255,206,90,.25)", marginTop:12 }}>
+                  <strong style={{color:"var(--warn)"}}>DON'T SEE DEVELOPER OPTIONS?</strong>
+                  <p style={{marginBottom:0}}>Go to <strong>Settings → My Fire TV → About</strong>. Highlight your Fire TV device name and press the centre/select button <strong>7 times</strong>. Go back one screen.</p>
                 </div>
-                <h3 style={{ fontSize: 24, marginTop: 20 }}>{app.name}</h3>
-                <p style={{ flex: 1 }}>{app.description}</p>
-                <div style={{ margin: "12px 0 16px", padding: 18, borderRadius: 14, background: "rgba(3,6,15,.55)", border: "1px solid var(--line)" }}>
-                  <span style={{ display: "block", color: "var(--faint)", fontSize: 11, fontWeight: 800, letterSpacing: ".12em" }}>DOWNLOADER CODE</span>
-                  <strong style={{ display: "block", color: app.color, fontSize: 32, letterSpacing: ".06em", marginTop: 4 }}>{app.code}</strong>
-                </div>
-                <button className="btn btn-primary btn-block" onClick={() => copyCode(app.code, app.name)}>
-                  {copied === app.name ? "Code copied" : "Copy Downloader code"}
-                </button>
-                <div style={{ marginTop: 16, fontSize: 12, fontWeight: 800, color: app.color, letterSpacing: ".05em" }}>BEST FOR: {app.best}</div>
+              </Step>
+
+              <Step number="3" title="Open Downloader">
+                <p>Open Downloader. Click the big address/code box on the Home screen. You will type the three codes below one at a time.</p>
+              </Step>
+
+              {apps.map(app => (
+                <Step key={app.name} number={app.n} title={`Install ${app.name}`} color={app.color}>
+                  <div style={{ padding:20, borderRadius:14, background:"rgba(3,6,15,.65)", border:"1px solid var(--line)", margin:"12px 0" }}>
+                    <div style={{fontSize:12, fontWeight:800, letterSpacing:".12em", color:"var(--faint)"}}>TYPE THIS INTO DOWNLOADER</div>
+                    <div style={{fontSize:"clamp(38px,9vw,58px)", lineHeight:1.1, fontWeight:900, letterSpacing:".06em", color:app.color, margin:"8px 0"}}>{app.code}</div>
+                    <button className="btn btn-primary" onClick={()=>copy(app.code,app.name)}>{copied===app.name ? "COPIED ✓" : `COPY ${app.code}`}</button>
+                  </div>
+                  <p><strong style={{color:app.color}}>{app.use}:</strong> {app.detail}</p>
+                  <p>{app.note}</p>
+                  <div style={{padding:14,borderRadius:10,background:"rgba(56,214,255,.06)"}}>
+                    <strong style={{color:"var(--foam)"}}>When installation finishes:</strong> choose <strong>DONE</strong>. If Downloader asks to delete the APK, choose <strong>DELETE → DELETE</strong>. Then come back to Downloader for the next code.
+                  </div>
+                </Step>
+              ))}
+
+              <div className="band" style={{ marginTop:30, marginBottom:28 }}>
+                <span className="eyebrow">✓ FINISHED</span>
+                <h2 style={{marginTop:15}}>That's it. You're ready.</h2>
+                <p style={{maxWidth:700}}>Go to your Firestick Apps screen. Open each app once. If you can't see an app, select the Apps icon and choose <strong>My Apps</strong> / <strong>See All</strong>.</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="section-pad">
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">INSTALLATION SOP</span>
-            <h2>Downloader: step by step.</h2>
-            <p>Use the same process for each of the three apps.</p>
-          </div>
-          <div className="grid grid-2">
-            {installSteps.map(([title, body], index) => (
-              <div className="card" key={title}>
-                <div className="ico">{index + 1}</div>
-                <h3>{title}</h3>
-                <p>{body}</p>
+              <div className="grid grid-3" style={{marginBottom:28}}>
+                <div className="card"><h3>📺 Want TV?</h3><p><strong style={{color:"var(--cyan)"}}>OPEN WAVEO</strong><br/>Live TV, sports, PPV, movies, series and VOD.</p></div>
+                <div className="card"><h3>▶️ Want YouTube?</h3><p><strong style={{color:"#b45be3"}}>OPEN TIZENTUBE</strong><br/>Your YouTube app.</p></div>
+                <div className="card"><h3>🎬 Want the free extra?</h3><p><strong style={{color:"var(--ok)"}}>OPEN STREMIO</strong><br/>Free bonus. Use it while it works.</p></div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="section-pad" style={{ paddingTop: 0 }}>
-        <div className="container">
-          <div className="band" style={{ textAlign: "left", borderColor: "rgba(52,226,176,.38)" }}>
-            <span className="eyebrow" style={{ color: "var(--ok)" }}>IMPORTANT — STREMIO</span>
-            <h2 style={{ marginTop: 16 }}>Stremio is a free bonus. It will not last forever.</h2>
-            <p style={{ marginLeft: 0, maxWidth: 820 }}>
-              You are <strong style={{ color: "var(--foam)" }}>not paying for Stremio</strong>. It is installed free as an extra because it works well right now. GWS expects this setup to eventually stop working or change, so enjoy it while it is available. If Stremio stops working in the future, that does not mean your paid Waveo / Neighbourhood service is down.
-            </p>
-            <p style={{ marginLeft: 0, maxWidth: 820, marginBottom: 0 }}>
-              When using Stremio, choose the title you want and then choose an available source you are authorized to access. Availability can vary.
-            </p>
-          </div>
-        </div>
-      </section>
+              <div className="band" style={{textAlign:"left", borderColor:"rgba(255,206,90,.5)", marginBottom:28}}>
+                <span className="eyebrow" style={{color:"var(--warn)"}}>⚠ STREMIO — PLEASE READ</span>
+                <h2 style={{marginTop:15}}>Stremio WILL eventually stop working or change.</h2>
+                <p style={{marginLeft:0,maxWidth:"none"}}><strong style={{color:"var(--foam)"}}>You are NOT paying for Stremio.</strong> We installed it FREE because it works well right now. Enjoy it while it works. If Stremio stops working later, your paid Great White Streams service is still Waveo / Neighbourhood.</p>
+              </div>
 
-      <section className="section-pad" style={{ paddingTop: 20 }}>
-        <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">EASY WAY TO REMEMBER IT</span>
-            <h2>Three apps. Three jobs.</h2>
-          </div>
-          <div className="grid grid-3">
-            <div className="card"><h3>📺 Waveo</h3><p><strong style={{ color: "var(--cyan)" }}>EVERYTHING.</strong><br />Your paid TV service: live TV, sports, PPV, movies, series and VOD.</p></div>
-            <div className="card"><h3>▶️ TizenTube</h3><p><strong style={{ color: "#b45be3" }}>YOUTUBE.</strong><br />Your simple YouTube option without the usual ad interruptions.</p></div>
-            <div className="card"><h3>🎬 Stremio</h3><p><strong style={{ color: "var(--ok)" }}>FREE BONUS.</strong><br />Use it while you can. It is separate from the paid GWS service.</p></div>
-          </div>
+              <div className="band" style={{textAlign:"left"}}>
+                <span className="eyebrow">I'M STUCK</span>
+                <h2 style={{marginTop:15}}>Quick fixes</h2>
+                <p style={{marginLeft:0,maxWidth:"none"}}><strong style={{color:"var(--foam)"}}>No Developer Options?</strong> My Fire TV → About → highlight device name → press Select 7 times.</p>
+                <p style={{marginLeft:0,maxWidth:"none"}}><strong style={{color:"var(--foam)"}}>Downloader won't install?</strong> Recheck Step 2 and make sure Downloader is ON under Install Unknown Apps.</p>
+                <p style={{marginLeft:0,maxWidth:"none"}}><strong style={{color:"var(--foam)"}}>Code didn't work?</strong> Check the number and try it again. Do not add spaces.</p>
+                <p style={{marginLeft:0,maxWidth:"none",marginBottom:0}}><strong style={{color:"var(--foam)"}}>Can't find the app?</strong> Open the Apps icon → My Apps / See All and look near the bottom.</p>
+              </div>
+            </>
+          )}
         </div>
-      </section>
-
+      </main>
       <Footer />
     </>
   );
