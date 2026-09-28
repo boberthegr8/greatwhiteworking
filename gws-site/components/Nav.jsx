@@ -14,8 +14,7 @@ export default function Nav() {
         </Link>
 
         <div className="nav-links">
-          <Link href="/firestick-setup">3-App Setup</Link>
-          <Link href="/hush-update">Hush-XC Setup</Link>
+          <Link href="/firestick-setup">Install Guide</Link>
           <Link href="/#trial">Free Trial</Link>
           <Link href="/#contact">Support</Link>
         </div>
@@ -25,7 +24,7 @@ export default function Nav() {
             Admin
           </Link>
           <Link href="/firestick-setup" className="btn btn-primary">
-            3-App Setup Guide
+            Install Guide
           </Link>
         </div>
       </div>
